@@ -1,0 +1,25 @@
+dag_id: rel_report_mf_aum
+
+schedule_interval: "0 8 * * *"
+
+default_args:
+  retries: 3
+  retry_delay_sec: 60
+
+tags:
+  - reliability
+
+tasks:
+
+  - DependencyCheck:
+      task_id: dep_check
+
+  - RedshiftToDB:
+      task_id: redshift_to_rds
+      dependencies:
+        - dep_check
+
+  - DBToRedshift:
+      task_id: rds_to_redshift
+      dependencies:
+        - redshift_to_rds

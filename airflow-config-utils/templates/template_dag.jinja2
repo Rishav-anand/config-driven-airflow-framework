@@ -1,0 +1,7 @@
+from custom.utils.dynamic_dag_builder import DynamicDAGBuilder
+
+config = {{ config }}
+
+builder = DynamicDAGBuilder()
+
+dag = builder.create_dag(config)
