@@ -8,8 +8,7 @@ def load_yaml(path):
 
 
 if __name__ == "__main__":
-    config_dir = Path("../airflow-configs/configs")
+    config_dir = Path("../../airflow-configs/configs")
 
     for file in config_dir.rglob("*.yaml"):
         print(load_yaml(file))
-        print(file)
